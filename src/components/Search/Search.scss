@@ -1,0 +1,24 @@
+.search {
+    height: 32px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    &__img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    &__input {
+        padding: 5px;
+        width: 100%;
+        max-width: 210px;
+        border: none;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.75rem;
+        letter-spacing: 0.01em;
+        color: #90A0B7;
+    }
+}

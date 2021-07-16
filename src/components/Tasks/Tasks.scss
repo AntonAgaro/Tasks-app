@@ -1,0 +1,82 @@
+
+.tasks {
+    margin-top: 3%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 28px;
+
+    &__title {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 1.125rem;
+        color: #1D262C;
+    }
+
+    &__list {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 21px;
+    }
+
+    &__list-item {
+        padding-right: 10px;
+        position: relative;
+        width: 100%;
+        max-width: 842px;
+        height: 39px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 0.5px solid #E0E0E0;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -1rem;
+            width: 9px;
+            height: 10px;
+            background: url("images/list-style.svg");
+        }
+    }
+
+    &__list-item-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__list-item-text {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 0.875rem;
+        color: #000000;
+    }
+
+    &__list-item-text-tasks {
+        flex-basis: 50%;
+    }
+
+    &__list-item-icon {
+        cursor: pointer;
+    }
+}
+
+.yellow-icon {
+    color: #ffb703;
+}
+
+.green-icon {
+    color: green;
+}
+
+.trash-icon {
+    color: #F3477A;
+}

@@ -1,0 +1,43 @@
+.add-note {
+    margin-top: 3.4%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    &__title {
+        font-family: Poppins;
+        font-weight: 700;
+        font-size: 2.25rem;
+        color: #1D262C;
+    }
+
+    &__span {
+        color: #F3477A;
+    }
+
+    &__btn {
+        width: 139px;
+        height: 34px;
+        background: #884CB2;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__btn-img {
+        width: 18px;
+        height: 18px;
+    }
+
+    &__btn-text {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 0.75rem;
+        color: #FFFFFF;
+    }
+
+}
