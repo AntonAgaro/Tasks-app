@@ -28,7 +28,8 @@ const authReducer = (state = initialState.auth, action) => {
             }
         case 'SIGN_UP_ERR':
             return {
-                ...state
+                ...state,
+                error: action.err
             }
         default:
             return state

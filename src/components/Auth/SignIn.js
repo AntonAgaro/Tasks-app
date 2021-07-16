@@ -23,38 +23,39 @@ const  SignIn = props => {
         }
     }
 
-        if (props.uid) {
-            return <Redirect to="/"/>
-        }
-        return (
-            <div className="form-wrapper">
-                <h1 className="form-wrapper__title">Sign In</h1>
-                    {renderError()}
-                <form 
-                    id="signin-form"
-                    className="form" 
-                    onSubmit={handleSubmit}
-                >
-                    <input 
-                        className="form__input" 
-                        type="email" 
-                        placeholder="Email" 
-                        onChange={handleChange}
-                        required
-                    />
-                    <input 
-                        className="form__input" 
-                        type="password" 
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                        minLength="6"
-                    />
-                    <button className="form__button" type="sumbit">Sign in</button>
-                </form>
-            </div>
-        );
+    if (props.uid) {
+        return <Redirect to="/"/>
     }
+
+    return (
+        <div className="form-wrapper">
+            <h1 className="form-wrapper__title">Sign In</h1>
+                {renderError()}
+            <form 
+                id="signin-form"
+                className="form" 
+                onSubmit={handleSubmit}
+            >
+                <input 
+                    className="form__input" 
+                    type="email" 
+                    placeholder="Email" 
+                    onChange={handleChange}
+                    required
+                />
+                <input 
+                    className="form__input" 
+                    type="password" 
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                    minLength="6"
+                />
+                <button className="form__button" type="sumbit">Sign in</button>
+            </form>
+        </div>
+    );
+}
 
 const mapStateToProps = state => {
     const uid = state.firebase.auth.uid;

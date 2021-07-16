@@ -5,11 +5,22 @@ import moment from 'moment';
 
 const Task = props => {
     const task = props.task;
+    
     const iconClasses = ['fas', 'fa-check-circle', 'tasks__list-item-icon'];
     if (task.isDone) {
         iconClasses.push('green-icon');
     } else {
         iconClasses.push('yellow-icon');
+    }
+
+    const onDelete = () => {
+        let ask = window.confirm('Delete this task?');
+        if (ask) {
+            props.removeTask(task)
+        } else {
+            return;
+        }
+        
     }
     return (
         <li className="tasks__list-item">
@@ -22,7 +33,7 @@ const Task = props => {
             ></i>
             <i 
                 className="fas fa-trash-alt tasks__list-item-icon trash-icon"
-                onClick={() => props.removeTask(task)}
+                onClick={onDelete}
             ></i>
             </div>
         </li>

@@ -1,44 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { signUp, onChangeEmailAndPassword } from '../../redux/actions/authActions';
 import './Auth.scss';
 
-class SignUp extends Component {
+const SignUp = props => {
 
-    handleChange = (e) => {
+    const handleChange = (e) => {
         const target = e.target;
-        this.props.onChangeEmailAndPassword(target.type, target.value);
+        props.onChangeEmailAndPassword(target.type, target.value);
     }
 
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.signUp(this.props.state);
+        props.signUp(props.user);
     }
 
-    render() {
-        if (this.props.uid) {
+    const errorMessage = () => {
+        if (props.error.message) {
+            return (
+                <h1 className="form-wrapper__title  form-wrapper__title--red">
+                    {props.error.message}
+                </h1>
+            )
+        } else {
+            return;
+        }
+    }
+
+        if (props.uid) {
             return <Redirect to="/"/>
         }
         return (
             <div className="form-wrapper">
                 <h1 className="form-wrapper__title">Sign Up</h1>
+                {errorMessage()}
                 <form 
                     className="form" 
-                    onSubmit={this.handleSubmit}
+                    onSubmit={handleSubmit}
                 >
                     <input 
                         className="form__input" 
                         type="email" 
                         placeholder="Email" 
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                         required
                     />
                     <input 
                         className="form__input" 
                         type="password" 
                         placeholder="Password"
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                         required
                         minLength="6"
                     />
@@ -46,13 +58,15 @@ class SignUp extends Component {
                 </form>
             </div>
         );
-    }
 }
 
 const mapStateToProps = state => {
     const uid = state.firebase.auth.uid;
+    const user = state.authReducer.user;
+    const error = state.authReducer.error;
     return {
-        state: state.authReducer.user,
+        error,
+        user, 
         uid
     }
 }
