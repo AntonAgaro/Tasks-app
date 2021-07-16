@@ -5,6 +5,7 @@ const authReducer = (state = initialState.auth, action) => {
         case 'ON_CHANGE_EMAIL_AND_PASSWORD':
             return {
                 ...state,
+                error: '',
                 user: {...state.user, ...action.payload}
             }
         case 'SIGN_IN':
@@ -13,7 +14,8 @@ const authReducer = (state = initialState.auth, action) => {
             }
         case 'SIGN_IN_ERR':
             return {
-                ...state
+                ...state,
+                error: action.err
             }
         case 'SIGN_OUT':
             return {

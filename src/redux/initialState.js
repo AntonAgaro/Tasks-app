@@ -10,7 +10,8 @@ const initialState = {
         isLogout: false
     },
     auth: {
-        user: {}
+        user: {},
+        error: ''
     }
 }
 

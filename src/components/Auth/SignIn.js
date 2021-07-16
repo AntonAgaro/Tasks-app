@@ -15,12 +15,21 @@ const  SignIn = props => {
         props.signIn(props.user);
     }
 
+    const renderError = () => {
+        if (props.error.message) {
+            return (
+                <h1 className="form-wrapper__title  form-wrapper__title--red">Incorrect email or password!</h1>
+            )
+        }
+    }
+
         if (props.uid) {
             return <Redirect to="/"/>
         }
         return (
             <div className="form-wrapper">
                 <h1 className="form-wrapper__title">Sign In</h1>
+                    {renderError()}
                 <form 
                     id="signin-form"
                     className="form" 
@@ -49,10 +58,12 @@ const  SignIn = props => {
 
 const mapStateToProps = state => {
     const uid = state.firebase.auth.uid;
+    const error = state.authReducer.error;
     return {
         state,
         uid: uid,
-        user: state.authReducer.user
+        user: state.authReducer.user,
+        error
     }
 }
 
